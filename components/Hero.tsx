@@ -52,7 +52,7 @@ export function Hero() {
       <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-black shadow-glow">
         <div className="pointer-events-none absolute inset-0">
           <Image
-            src="/tarjeta/images/hero-fallback.svg"
+            src="/tarjeta/images/marroco2-2.jpg"
             alt="Composición de gemas y cristales de ANTHARES"
             fill
             priority
@@ -66,7 +66,7 @@ export function Hero() {
               loop
               playsInline
               preload="auto"
-              poster="/tarjeta/images/hero-fallback.svg"
+              poster="/tarjeta/images/marroco2-2.jpg"
               onLoadedMetadata={(event) => {
                 try {
                   event.currentTarget.currentTime = 3.2;
