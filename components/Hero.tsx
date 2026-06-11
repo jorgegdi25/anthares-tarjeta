@@ -2,14 +2,50 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const heroVideoSrc = "/media/anthares-hero.mp4";
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isVideoReady, setIsVideoReady] = useState(false);
   const [hasVideoError, setHasVideoError] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const playVideo = () => {
+      void video.play().catch(() => {});
+    };
+
+    const handleVisibility = () => {
+      if (!document.hidden) {
+        playVideo();
+      }
+    };
+
+    const handlePause = () => {
+      if (!document.hidden) {
+        window.setTimeout(playVideo, 250);
+      }
+    };
+
+    const timeout = window.setTimeout(playVideo, 250);
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    window.addEventListener("focus", playVideo);
+    video.addEventListener("pause", handlePause);
+
+    return () => {
+      window.clearTimeout(timeout);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      window.removeEventListener("focus", playVideo);
+      video.removeEventListener("pause", handlePause);
+    };
+  }, []);
 
   return (
     <section className="section-shell relative mt-4">
@@ -29,9 +65,17 @@ export function Hero() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
+              poster="/images/hero-fallback.svg"
               onLoadedMetadata={(event) => {
-                event.currentTarget.currentTime = 3.2;
+                try {
+                  event.currentTarget.currentTime = 3.2;
+                } catch {
+                  // Some mobile browsers delay seeking until the video is ready.
+                }
+              }}
+              onLoadedData={(event) => {
+                void event.currentTarget.play().catch(() => {});
               }}
               onCanPlay={async () => {
                 try {
@@ -39,12 +83,9 @@ export function Hero() {
                 } catch {
                   // Fallback image stays visible if autoplay is blocked.
                 }
-                setIsVideoReady(true);
               }}
               onError={() => setHasVideoError(true)}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-                isVideoReady ? "opacity-100" : "opacity-0"
-              }`}
+              className="absolute inset-0 h-full w-full object-cover"
             >
               <source src={heroVideoSrc} type="video/mp4" />
             </video>
