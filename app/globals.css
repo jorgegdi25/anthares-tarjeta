@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #050505;
+  --foreground: #f8f5f2;
+  --muted: #b3aba5;
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", "Book Antiqua", serif;
+  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", "Arial Nova", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  min-height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  background:
+    radial-gradient(circle at top, rgba(216, 106, 32, 0.14), transparent 28%),
+    linear-gradient(180deg, #080808 0%, #050505 45%, #020202 100%);
+  color: var(--foreground);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.22;
+}
+
+::selection {
+  background: rgba(216, 106, 32, 0.35);
+  color: white;
+}
+
+.card-surface {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(16px);
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-md px-5;
+}
+
+.soft-label {
+  @apply text-[0.68rem] uppercase tracking-[0.38em] text-anthares-stone;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
