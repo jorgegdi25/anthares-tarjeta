@@ -11,14 +11,14 @@ export function Header() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="section-shell relative z-20 pt-5"
     >
-      <div className="flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur">
+      <div className="flex items-center justify-center rounded-full border border-white/5 bg-white/5 px-6 py-3 backdrop-blur">
         <Image
           src="/tarjeta/images/logo-anthares.png"
           alt="Logo ANTHARES"
-          width={125}
-          height={73}
+          width={105}
+          height={61}
           priority
-          className="h-auto w-[112px] sm:w-[125px]"
+          className="h-auto w-[95px] sm:w-[105px]"
         />
       </div>
     </motion.header>
