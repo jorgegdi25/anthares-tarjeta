@@ -1,4 +1,4 @@
-name: Build and Push for Hostinger
+name: Deploy to Hostinger via FTP
 
 on:
   push:
@@ -8,9 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,11 +23,11 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Push compiled output to hostinger-deploy branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Sync files to Hostinger FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          publish_branch: hostinger-deploy
-          force_orphan: true
-          commit_message: "Auto-build for Hostinger Deployment"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/tarjeta/
+          local-dir: ./out/
