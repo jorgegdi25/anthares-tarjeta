@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const heroVideoSrc = "/media/anthares-hero.mp4";
+const heroVideoSrc = "/tarjeta/media/anthares-hero.mp4";
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -52,7 +52,7 @@ export function Hero() {
       <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-black shadow-glow">
         <div className="pointer-events-none absolute inset-0">
           <Image
-            src="/images/hero-fallback.svg"
+            src="/tarjeta/images/hero-fallback.svg"
             alt="Composición de gemas y cristales de ANTHARES"
             fill
             priority
@@ -66,7 +66,7 @@ export function Hero() {
               loop
               playsInline
               preload="auto"
-              poster="/images/hero-fallback.svg"
+              poster="/tarjeta/images/hero-fallback.svg"
               onLoadedMetadata={(event) => {
                 try {
                   event.currentTarget.currentTime = 3.2;

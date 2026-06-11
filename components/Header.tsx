@@ -13,7 +13,7 @@ export function Header() {
     >
       <div className="flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur">
         <Image
-          src="/images/logo-anthares.png"
+          src="/tarjeta/images/logo-anthares.png"
           alt="Logo ANTHARES"
           width={125}
           height={73}
