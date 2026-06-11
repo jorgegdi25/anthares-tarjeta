@@ -25,6 +25,11 @@ export function LinkButton({ href, label, icon, caption, prominent = false }: Li
             ? "border-anthares-amber/40 bg-gradient-to-r from-anthares-ember/30 to-anthares-amber/15 shadow-glow"
             : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
         }`}
+        onClick={() => {
+          if (typeof navigator !== "undefined" && navigator.vibrate) {
+            navigator.vibrate(50);
+          }
+        }}
       >
         <div
           className={`flex h-11 w-11 items-center justify-center rounded-full border ${

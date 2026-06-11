@@ -56,7 +56,7 @@ export function Hero() {
             alt="Composición de gemas y cristales de ANTHARES"
             fill
             priority
-            className="object-cover"
+            className={`object-cover ${!hasVideoError ? "animate-pulse" : ""}`}
           />
           {!hasVideoError && (
             <video
