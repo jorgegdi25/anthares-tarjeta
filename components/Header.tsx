@@ -9,17 +9,25 @@ export function Header() {
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="section-shell relative z-20 pt-5"
+      className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 pt-6"
     >
-      <div className="flex items-center justify-center rounded-full border border-white/5 bg-white/5 px-6 py-3 backdrop-blur">
+      <div className="flex-1" />
+      <div className="flex justify-center flex-1">
         <Image
           src="/tarjeta/images/logo-anthares.png"
           alt="Logo ANTHARES"
-          width={105}
-          height={61}
+          width={140}
+          height={82}
           priority
-          className="h-auto w-[95px] sm:w-[105px]"
+          className="h-auto w-[120px]"
         />
+      </div>
+      <div className="flex justify-end flex-1">
+        <button className="flex flex-col gap-[5px] p-2">
+          <div className="w-6 h-[1.5px] bg-white" />
+          <div className="w-6 h-[1.5px] bg-white" />
+          <div className="w-6 h-[1.5px] bg-white" />
+        </button>
       </div>
     </motion.header>
   );

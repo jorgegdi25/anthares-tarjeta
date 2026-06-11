@@ -1,65 +1,64 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const collections = [
   {
-    title: "Cristales",
+    title: "CRISTALES",
     image: "/tarjeta/images/collections/joyeria2.jpg",
   },
   {
-    title: "Cuentas Africanas",
+    title: "CUENTAS AFRICANAS",
     image: "/tarjeta/images/collections/munecas1.jpg",
   },
   {
-    title: "Joyería Étnica",
+    title: "JOYERÍA ÉTNICA",
     image: "/tarjeta/images/collections/marroco1.jpg",
   },
   {
-    title: "Piezas Antiguas",
+    title: "PIEZAS ANTIGUAS",
     image: "/tarjeta/images/collections/textiles2.jpg",
   },
 ];
 
 export function CollectionsGallery() {
   return (
-    <div className="mx-auto w-full max-w-md px-5 pb-12 pt-8">
-      <motion.h2 
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="mb-8 text-center font-serif text-2xl tracking-widest text-white/90"
-      >
-        COLECCIONES
-      </motion.h2>
+    <div className="w-full mt-12 pb-12">
+      <div className="flex flex-col items-center mb-8">
+        <div className="w-1.5 h-1.5 rotate-45 border border-[#D86A20] mb-3"></div>
+        <h2 className="font-sans text-[0.7rem] tracking-[0.35em] text-white/90">
+          NUESTRAS COLECCIONES
+        </h2>
+      </div>
 
-      <div className="flex flex-col gap-6">
-        {collections.map((collection, index) => (
-          <motion.div
+      {/* Horizontal scrolling container for mobile, or grid for larger screens */}
+      <div className="flex overflow-x-auto gap-4 px-6 pb-6 snap-x snap-mandatory scrollbar-hide">
+        {collections.map((collection) => (
+          <div
             key={collection.title}
-            initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
-            className="group relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] bg-white/5"
+            className="group relative flex-none w-[180px] h-[260px] snap-center overflow-hidden rounded-[1.2rem] border border-white/5 bg-[#0A0A0A]"
           >
-            <Image
-              src={collection.image}
-              alt={collection.title}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            {/* Gradient Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+            <div className="absolute inset-x-0 top-0 bottom-[4.5rem]">
+              <Image
+                src={collection.image}
+                alt={collection.title}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+            </div>
             
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <h3 className="font-serif text-xl tracking-wider text-white">
+            <div className="absolute bottom-0 left-0 right-0 h-[4.5rem] bg-[#0A0A0A] flex flex-col items-center justify-center px-2">
+              <h3 className="font-sans text-[0.65rem] tracking-[0.2em] text-center text-white mb-2 leading-tight">
                 {collection.title}
               </h3>
+              <div className="flex items-center gap-1">
+                <div className="h-px w-6 bg-[#D86A20]/60"></div>
+                <div className="w-1 h-1 rotate-45 border border-[#D86A20]"></div>
+                <div className="h-px w-6 bg-[#D86A20]/60"></div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

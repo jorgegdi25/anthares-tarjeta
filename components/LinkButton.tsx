@@ -20,10 +20,10 @@ export function LinkButton({ href, label, icon, caption, prominent = false }: Li
         href={href}
         target="_blank"
         rel="noreferrer"
-        className={`group flex items-center gap-4 rounded-[1.55rem] border px-4 py-4 transition-all duration-300 ${
+        className={`group flex items-center gap-4 rounded-full border px-2 py-2 pr-6 transition-all duration-300 ${
           prominent
-            ? "border-anthares-amber/40 bg-gradient-to-r from-anthares-ember/30 to-anthares-amber/15 shadow-glow"
-            : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
+            ? "border-[#D86A20]/40 bg-gradient-to-r from-[#D86A20]/20 to-[#D86A20]/5 shadow-glow"
+            : "border-white/10 bg-[#0A0A0A] hover:border-white/20 hover:bg-white/[0.04]"
         }`}
         onClick={() => {
           if (typeof navigator !== "undefined" && navigator.vibrate) {

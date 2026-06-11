@@ -3,34 +3,32 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { WhatsAppIcon } from "@/components/icons";
 
 const heroVideoSrc = "/tarjeta/media/anthares-hero.mp4";
 
-export function Hero() {
+interface HeroProps {
+  onOpenContact: () => void;
+}
+
+export function Hero({ onOpenContact }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [hasVideoError, setHasVideoError] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
+    if (!video) return;
 
     const playVideo = () => {
       void video.play().catch(() => {});
     };
 
     const handleVisibility = () => {
-      if (!document.hidden) {
-        playVideo();
-      }
+      if (!document.hidden) playVideo();
     };
 
     const handlePause = () => {
-      if (!document.hidden) {
-        window.setTimeout(playVideo, 250);
-      }
+      if (!document.hidden) window.setTimeout(playVideo, 250);
     };
 
     const timeout = window.setTimeout(playVideo, 250);
@@ -48,69 +46,94 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="section-shell relative mt-4">
-      <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-black shadow-glow">
-        <div className="pointer-events-none absolute inset-0">
-          <Image
-            src="/tarjeta/images/marroco2-2.jpg"
-            alt="Composición de gemas y cristales de ANTHARES"
-            fill
-            priority
-            className={`object-cover ${!hasVideoError ? "animate-pulse" : ""}`}
-          />
-          {!hasVideoError && (
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/tarjeta/images/marroco2-2.jpg"
-              onLoadedMetadata={(event) => {
-                try {
-                  event.currentTarget.currentTime = 3.2;
-                } catch {
-                  // Some mobile browsers delay seeking until the video is ready.
-                }
-              }}
-              onLoadedData={(event) => {
-                void event.currentTarget.play().catch(() => {});
-              }}
-              onCanPlay={async () => {
-                try {
-                  await videoRef.current?.play();
-                } catch {
-                  // Fallback image stays visible if autoplay is blocked.
-                }
-              }}
-              onError={() => setHasVideoError(true)}
-              className="absolute inset-0 h-full w-full object-cover"
-            >
-              <source src={heroVideoSrc} type="video/mp4" />
-            </video>
-          )}
-          <div className="absolute inset-0 bg-black/58" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/22 to-black/90" />
-        </div>
-
-        <div className="relative flex min-h-[28rem] flex-col justify-end px-6 pb-9 pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.7, ease: "easeOut" }}
-            className="mx-auto mt-auto max-w-[19rem] text-center"
+    <section className="relative w-full h-[90vh] min-h-[650px] flex flex-col justify-end pb-8">
+      {/* Background Media */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/tarjeta/images/marroco2-2.jpg"
+          alt="Composición de gemas y cristales de ANTHARES"
+          fill
+          priority
+          className={`object-cover ${!hasVideoError ? "animate-pulse" : ""}`}
+        />
+        {!hasVideoError && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/tarjeta/images/marroco2-2.jpg"
+            onLoadedMetadata={(event) => {
+              try { event.currentTarget.currentTime = 3.2; } catch {}
+            }}
+            onLoadedData={(event) => {
+              void event.currentTarget.play().catch(() => {});
+            }}
+            onCanPlay={async () => {
+              try { await videoRef.current?.play(); } catch {}
+            }}
+            onError={() => setHasVideoError(true)}
+            className="absolute inset-0 h-full w-full object-cover"
           >
-            <p className="soft-label mb-4 text-anthares-sand/80">Pereira, Colombia • Desde 1990</p>
-            <h1 className="font-[family-name:var(--font-display)] text-[2.45rem] leading-[0.96] text-white">
-              Joyeria etnica, cristales antiguos y piezas con historia.
-            </h1>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Un pequeno gran taller inspirado por Africa, la belleza de las cuentas antiguas y la
-              pasion por crear articulos unicos en su genero.
-            </p>
-          </motion.div>
-        </div>
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
+        )}
+        {/* Gradient overlays to blend into black bottom */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#050505]" />
+      </div>
+
+      {/* Overlay Content */}
+      <div className="relative z-10 px-8 mx-auto w-full max-w-md">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.7, ease: "easeOut" }}
+        >
+          <p className="text-[0.65rem] tracking-[0.2em] text-white/70 mb-2 uppercase font-medium">
+            Pereira, Colombia • Desde 1990
+          </p>
+          <h1 className="font-serif text-[3.2rem] leading-[1.05] text-white mb-0">
+            Piezas con
+          </h1>
+          <h1 className="font-serif text-[3.2rem] leading-[1.05] text-[#D86A20] mb-6">
+            historia.
+          </h1>
+          
+          <div className="flex items-center gap-2 mb-6">
+            <div className="h-px w-16 bg-white/30"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-[#D86A20]"></div>
+            <div className="h-px w-16 bg-white/30"></div>
+          </div>
+          
+          <p className="text-white/90 text-[0.95rem] leading-relaxed mb-10 pr-4">
+            Cristales, joyería étnica y objetos únicos seleccionados de todo el mundo.
+          </p>
+
+          <button
+            onClick={onOpenContact}
+            className="group relative flex w-full max-w-[320px] items-center justify-between rounded-[2rem] border border-[#D86A20]/60 px-1.5 py-1.5 pr-6 transition-all hover:bg-[#D86A20]/10"
+          >
+            <div className="flex items-center gap-4">
+              <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[#D86A20]/50 bg-black/20">
+                <WhatsAppIcon className="h-5 w-5 text-[#D86A20]" />
+              </div>
+              <span className="font-medium text-white text-[1.05rem]">Habla con Anthares</span>
+            </div>
+            <svg className="h-5 w-5 text-[#D86A20]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          
+          <div className="mt-5 flex items-center gap-2 text-white/50 text-xs">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+            </svg>
+            <span>Atención personalizada</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
