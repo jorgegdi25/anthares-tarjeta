@@ -4,19 +4,19 @@ import Image from "next/image";
 
 const collections = [
   {
-    title: "CRISTALES",
-    image: "/tarjeta/images/collections/joyeria2.jpg",
-  },
-  {
-    title: "CUENTAS AFRICANAS",
-    image: "/tarjeta/images/collections/munecas1.jpg",
-  },
-  {
-    title: "JOYERÍA ÉTNICA",
+    title: "PIEDRAS AFRICANAS",
     image: "/tarjeta/images/collections/marroco1.jpg",
   },
   {
-    title: "PIEZAS ANTIGUAS",
+    title: "JOYERÍA ÉTNICA",
+    image: "/tarjeta/images/collections/joyeria2.jpg",
+  },
+  {
+    title: "MUÑECAS AFRICANAS",
+    image: "/tarjeta/images/collections/munecas1.jpg",
+  },
+  {
+    title: "TEXTILES AFRICANOS",
     image: "/tarjeta/images/collections/textiles2.jpg",
   },
 ];

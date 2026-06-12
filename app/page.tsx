@@ -10,9 +10,16 @@ import {
   InstagramIcon,
   MapPinIcon,
   TikTokIcon,
+  GlobeIcon,
 } from "@/components/icons";
 
 const secondaryLinks = [
+  {
+    label: "Sitio Web",
+    caption: "antharesgemas.com",
+    href: "https://antharesgemas.com",
+    icon: <GlobeIcon className="h-5 w-5" />
+  },
   {
     label: "Instagram",
     href: "https://www.instagram.com/antharesgemas?igsh=eWg0eDkwZDlqN3lz&utm_source=qr",
