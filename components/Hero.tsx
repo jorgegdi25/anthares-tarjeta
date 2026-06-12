@@ -21,7 +21,10 @@ export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
     if (!video) return;
 
     const playVideo = () => {
-      void video.play().catch(() => {});
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => setHasVideoError(true));
+      }
     };
 
     const handleVisibility = () => {
@@ -70,10 +73,20 @@ export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
               try { event.currentTarget.currentTime = 3.2; } catch {}
             }}
             onLoadedData={(event) => {
-              void event.currentTarget.play().catch(() => {});
+              const playPromise = event.currentTarget.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => setHasVideoError(true));
+              }
             }}
             onCanPlay={async () => {
-              try { await videoRef.current?.play(); } catch {}
+              try { 
+                const playPromise = videoRef.current?.play();
+                if (playPromise !== undefined) {
+                  await playPromise;
+                }
+              } catch {
+                setHasVideoError(true);
+              }
             }}
             onError={() => setHasVideoError(true)}
             className="absolute inset-0 h-full w-full object-cover"
