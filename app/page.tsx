@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ContactBottomSheet } from "@/components/ContactBottomSheet";
+import { SocialBottomSheet } from "@/components/SocialBottomSheet";
 import { CollectionsGallery } from "@/components/CollectionsGallery";
 import { LinkButton } from "@/components/LinkButton";
 import {
@@ -46,6 +47,7 @@ const secondaryLinks = [
 
 export default function Home() {
   const [isContactSheetOpen, setIsContactSheetOpen] = useState(false);
+  const [isSocialSheetOpen, setIsSocialSheetOpen] = useState(false);
 
   return (
     <main className="relative overflow-x-hidden pb-4">
@@ -54,20 +56,14 @@ export default function Home() {
       {/* Hero with absolute full coverage and embedded CTA */}
       <Hero onOpenContact={() => setIsContactSheetOpen(true)} />
 
-      {/* Secondary Links - matching LinkTree style from ant1.png */}
+      {/* Secondary Links - collapsed into a single button */}
       <section className="mx-auto mt-6 w-full max-w-md px-5">
-        <div className="flex flex-col gap-3">
-          {secondaryLinks.map((link) => (
-            <LinkButton
-              key={link.label}
-              href={link.href}
-              label={link.label}
-              caption={link.caption}
-              icon={link.icon}
-              prominent={false}
-            />
-          ))}
-        </div>
+        <LinkButton
+          label="Visítanos en nuestras redes"
+          icon={<GlobeIcon className="h-5 w-5" />}
+          prominent={false}
+          onClick={() => setIsSocialSheetOpen(true)}
+        />
       </section>
 
       {/* Collections section */}
@@ -89,6 +85,11 @@ export default function Home() {
       <ContactBottomSheet 
         isOpen={isContactSheetOpen} 
         onClose={() => setIsContactSheetOpen(false)} 
+      />
+      <SocialBottomSheet
+        isOpen={isSocialSheetOpen}
+        onClose={() => setIsSocialSheetOpen(false)}
+        links={secondaryLinks}
       />
     </main>
   );
