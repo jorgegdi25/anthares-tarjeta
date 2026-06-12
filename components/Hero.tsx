@@ -47,7 +47,7 @@ export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[650px] flex flex-col justify-end pb-8">
+    <section className="relative w-full h-[90vh] min-h-[650px] flex flex-col justify-end pb-4">
       {/* Background Media */}
       <div className="pointer-events-none absolute inset-0">
         <Image
@@ -83,7 +83,7 @@ export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
         )}
         {/* Gradient overlays to blend into black bottom */}
         <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#050505]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black" />
       </div>
 
       {/* Overlay Content */}
@@ -155,7 +155,7 @@ export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="mt-12 flex flex-col items-center justify-center gap-1.5"
+            className="mt-6 flex flex-col items-center justify-center gap-1.5"
           >
             <span className="text-[0.75rem] uppercase tracking-[0.25em] text-white/80 font-medium">Descubre más</span>
             <motion.svg 

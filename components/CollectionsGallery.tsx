@@ -23,8 +23,8 @@ const collections = [
 
 export function CollectionsGallery() {
   return (
-    <div className="w-full mt-12 pb-12">
-      <div className="flex flex-col items-center mb-10 mt-6">
+    <div className="w-full mt-2 pb-12">
+      <div className="flex flex-col items-center mb-8 mt-2">
         <div className="w-1.5 h-1.5 rotate-45 border border-[#D86A20] mb-3"></div>
         <h2 className="font-sans text-[0.85rem] font-medium tracking-[0.35em] text-white/90">
           NUESTRAS COLECCIONES
