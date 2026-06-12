@@ -54,17 +54,12 @@ export default function Home() {
       <Header />
       
       {/* Hero with absolute full coverage and embedded CTA */}
-      <Hero onOpenContact={() => setIsContactSheetOpen(true)} />
+      <Hero 
+        onOpenContact={() => setIsContactSheetOpen(true)} 
+        onOpenSocial={() => setIsSocialSheetOpen(true)}
+      />
 
-      {/* Secondary Links - collapsed into a single button */}
-      <section className="mx-auto mt-6 w-full max-w-md px-5">
-        <LinkButton
-          label="Visítanos en nuestras redes"
-          icon={<GlobeIcon className="h-5 w-5" />}
-          prominent={false}
-          onClick={() => setIsSocialSheetOpen(true)}
-        />
-      </section>
+
 
       {/* Collections section */}
       <CollectionsGallery />

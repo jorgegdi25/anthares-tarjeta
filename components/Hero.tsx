@@ -3,15 +3,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { WhatsAppIcon } from "@/components/icons";
+import { WhatsAppIcon, GlobeIcon } from "@/components/icons";
 
 const heroVideoSrc = "/tarjeta/media/anthares-hero.mp4";
 
 interface HeroProps {
   onOpenContact: () => void;
+  onOpenSocial: () => void;
 }
 
-export function Hero({ onOpenContact }: HeroProps) {
+export function Hero({ onOpenContact, onOpenSocial }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [hasVideoError, setHasVideoError] = useState(false);
 
@@ -123,6 +124,21 @@ export function Hero({ onOpenContact }: HeroProps) {
               <span className="font-medium text-white text-[1.05rem]">Habla con Anthares</span>
             </div>
             <svg className="h-5 w-5 text-[#D86A20]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          
+          <button
+            onClick={onOpenSocial}
+            className="group relative mt-3 flex w-full max-w-[320px] items-center justify-between rounded-[2rem] border border-white/20 bg-white/5 px-1.5 py-1.5 pr-6 transition-all hover:bg-white/10 backdrop-blur-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-white/10 bg-black/20">
+                <GlobeIcon className="h-5 w-5 text-white/80" />
+              </div>
+              <span className="font-medium text-white/90 text-[1.05rem]">Nuestras redes</span>
+            </div>
+            <svg className="h-5 w-5 text-white/50 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
