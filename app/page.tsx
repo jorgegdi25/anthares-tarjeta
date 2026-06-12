@@ -11,6 +11,7 @@ import {
   MapPinIcon,
   TikTokIcon,
   GlobeIcon,
+  FacebookIcon,
 } from "@/components/icons";
 
 const secondaryLinks = [
@@ -24,6 +25,11 @@ const secondaryLinks = [
     label: "Instagram",
     href: "https://www.instagram.com/antharesgemas?igsh=eWg0eDkwZDlqN3lz&utm_source=qr",
     icon: <InstagramIcon className="h-5 w-5" />
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1CiGuMiuYS/?mibextid=wwXIfr",
+    icon: <FacebookIcon className="h-5 w-5" />
   },
   {
     label: "TikTok",
