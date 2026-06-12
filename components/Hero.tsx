@@ -92,7 +92,7 @@ export function Hero({ onOpenContact }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.7, ease: "easeOut" }}
         >
-          <p className="text-[0.75rem] tracking-[0.2em] text-white/80 mb-3 uppercase font-medium">
+          <p className="text-[0.8rem] tracking-[0.2em] text-white/95 mb-3 uppercase font-medium">
             Pereira, Colombia • Desde 1990
           </p>
           <h1 className="font-serif text-[3.2rem] leading-[1.05] text-white mb-0">
@@ -127,31 +127,31 @@ export function Hero({ onOpenContact }: HeroProps) {
             </svg>
           </button>
           
-          <div className="mt-5 flex items-center gap-2 text-white/60 text-[0.85rem]">
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+          <div className="mt-5 flex items-center justify-center gap-2 text-white/90 text-[0.9rem] font-medium">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
             <span>Atención personalizada</span>
           </div>
+
+          {/* Scroll Down Indicator (in normal flow to prevent overlap) */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="mt-12 flex flex-col items-center justify-center gap-1.5"
+          >
+            <span className="text-[0.75rem] uppercase tracking-[0.25em] text-white/80 font-medium">Descubre más</span>
+            <motion.svg 
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </motion.svg>
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Down Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center gap-1 opacity-70"
-      >
-        <span className="text-[0.65rem] uppercase tracking-[0.2em] text-white/50">Descubre más</span>
-        <motion.svg 
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7" />
-        </motion.svg>
-      </motion.div>
     </section>
   );
 }
