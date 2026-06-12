@@ -24,9 +24,9 @@ const collections = [
 export function CollectionsGallery() {
   return (
     <div className="w-full mt-12 pb-12">
-      <div className="flex flex-col items-center mb-8">
+      <div className="flex flex-col items-center mb-10 mt-6">
         <div className="w-1.5 h-1.5 rotate-45 border border-[#D86A20] mb-3"></div>
-        <h2 className="font-sans text-[0.7rem] tracking-[0.35em] text-white/90">
+        <h2 className="font-sans text-[0.85rem] font-medium tracking-[0.35em] text-white/90">
           NUESTRAS COLECCIONES
         </h2>
       </div>
@@ -48,8 +48,8 @@ export function CollectionsGallery() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
             </div>
             
-            <div className="absolute bottom-0 left-0 right-0 h-[4.5rem] bg-[#0A0A0A] flex flex-col items-center justify-center px-2">
-              <h3 className="font-sans text-[0.65rem] tracking-[0.2em] text-center text-white mb-2 leading-tight">
+            <div className="absolute bottom-0 left-0 right-0 h-[5rem] bg-[#0A0A0A] flex flex-col items-center justify-center px-2">
+              <h3 className="font-sans text-[0.75rem] tracking-[0.2em] text-center text-white mb-2.5 leading-tight">
                 {collection.title}
               </h3>
               <div className="flex items-center gap-1">
