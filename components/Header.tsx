@@ -23,11 +23,7 @@ export function Header() {
         />
       </div>
       <div className="flex justify-end flex-1">
-        <button className="flex flex-col gap-[5px] p-2">
-          <div className="w-6 h-[1.5px] bg-white" />
-          <div className="w-6 h-[1.5px] bg-white" />
-          <div className="w-6 h-[1.5px] bg-white" />
-        </button>
+        {/* Removed empty hamburger menu based on user feedback */}
       </div>
     </motion.header>
   );
