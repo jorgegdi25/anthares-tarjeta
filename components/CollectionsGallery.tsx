@@ -32,7 +32,7 @@ export function CollectionsGallery() {
       </div>
 
       {/* Horizontal scrolling container for mobile, or grid for larger screens */}
-      <div className="flex overflow-x-auto gap-4 px-6 pb-6 snap-x snap-mandatory scrollbar-hide">
+      <div className="flex overflow-x-auto gap-4 px-6 pb-6 snap-x snap-mandatory scrollbar-hide md:justify-center">
         {collections.map((collection) => (
           <div
             key={collection.title}
